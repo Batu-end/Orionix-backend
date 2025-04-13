@@ -20,21 +20,22 @@ async def get_with_zip(zip_code: str):
 
         if zip_code:
             api_url_zip = f"http://api.openweathermap.org/geo/1.0/zip?zip={zip_code},{country}&appid={API_KEY}"
-            zip_response = await client.get(api_url_zip)
-            # if zip_response.status_code == 200:
-            data = zip_response.json()
+            response = await client.get(api_url_zip)
 
-    lat = data.get("lat")
-    lon = data.get("lon")
-
-    return lat, lon
+            if response.status_code == 200:
+                data = response.json()
+                lat = data.get("lat")
+                lon = data.get("lon")
+                return lat, lon
+            else:
+                return None, None  # or raise error
 
 
 async def get_with_coor(lat: float, lon: float):
 
     async with httpx.AsyncClient() as client:
 
-        api_url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
+        api_url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
         response = await client.get(api_url)
 
         if response.status_code == 200:
