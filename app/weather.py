@@ -9,7 +9,7 @@ API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
 # OPENWEATHER API CALL: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}
 # GEOCODER API CALL: http://api.openweathermap.org/geo/1.0/zip?zip={zip code},{country code}&appid={API key}
-
+# 16-DAY CALL: http://api.openweathermap.org/data/2.5/forecast/daily??lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
 # async def get_coordinates(city: str = None, zip_code: str = None, country: str = "US"):
 
 
@@ -43,3 +43,13 @@ async def get_with_coor(lat: float, lon: float):
             return response.json()
         else:
             return {"error": "Failed to fetch weather data."}
+
+
+async def get_weather_condition(lat: float, lon: float):
+    weather_data = await get_with_coor(lat, lon)
+
+    if "weather" in weather_data and len(weather_data["weather"]) > 0:
+        condition = weather_data["weather"][0]["main"]
+        return condition
+    else:
+        return "Unknown"
