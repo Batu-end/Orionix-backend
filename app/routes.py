@@ -76,3 +76,10 @@ async def weather_type_by_zip(zip_code):
 async def places(lat: float, lon: float):
     res = await get_nearby_stargazing_spots(lat, lon)
     return res
+
+
+@app.get("/getNearbyPlacesZip")
+async def places(zip_code):
+    lat, lon = await get_with_zip(zip_code)
+    res = await get_nearby_stargazing_spots(lat, lon)
+    return res
