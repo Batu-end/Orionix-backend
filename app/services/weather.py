@@ -27,28 +27,14 @@ async def get_coordinates(city: str = None, zip_code: str = None, country: str =
         return lat, lon
 
 
-    # async def get_weather(lat, lon):
+async def get_weather(lat: float, lon: float):
 
-    #     async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient() as client:
 
-    #         api_url_coor = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
+        api_url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
+        response = await client.get(api_url)
 
-    #         zip_response = await client.get(api_url_coor)
-
-    #         # if zip_response.status_code == 200:
-    #         data = zip_response.json()
-        
-
-    async def get_weather(lat: float, lon: float):
-
-        async with httpx.AsyncClient() as client:
-
-            api_url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
-            response = await client.get(api_url)
-
-            if response.status_code == 200:
-                return response.json()
-            else:
-                return {"error": "Failed to fetch weather data."}
-
-    
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return {"error": "Failed to fetch weather data."}
