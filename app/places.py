@@ -23,5 +23,6 @@ async def get_nearby_stargazing_spots(lat: float, lon: float):
         response = await client.get(url, params=params)
         if response.status_code == 200:
             data = response.json()
+            print(data)
             return data.get("results", [])
         return []

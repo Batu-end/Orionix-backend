@@ -8,6 +8,7 @@ async def generate_tonight_summary(lat, lon):
 
     # Extract cloud cover from weather data
     cloud_cover = weather_data.get("clouds", {}).get("all", 100)
+    
 
     # Determine quality and message based on cloud cover
     if cloud_cover <= 40:
@@ -34,6 +35,7 @@ async def generate_tonight_summary(lat, lon):
         event_summary = "No major astronomical events tonight."
 
     return {
+        ""
         "weather_quality": quality,
         "weather_message": weather_message,
         "event_message": event_summary
