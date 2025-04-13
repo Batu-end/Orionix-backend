@@ -2,7 +2,7 @@ import os
 import httpx
 from dotenv import load_dotenv
 
-env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.env'))
 load_dotenv(dotenv_path=env_path)
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
@@ -27,6 +27,7 @@ async def get_with_zip(zip_code: str):
                 lat = data.get("lat")
                 lon = data.get("lon")
                 return lat, lon
+
             else:
                 return None, None  # or raise error
 

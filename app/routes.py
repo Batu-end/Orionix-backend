@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 from app.weather import get_with_zip, get_with_coor
 
-env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.env'))
 load_dotenv(dotenv_path=env_path)
 
 API_KEY = os.getenv("OPENWEATHER_API_KEY")
