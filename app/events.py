@@ -19,5 +19,5 @@ async def get_events_for_tonight():
 async def get_events_future():
     today = date.today()
     two_weeks_later = today + timedelta(days=14)
-    future_events = [event for event in EVENTS if today.isoformat() < event["date"] <= two_weeks_later.isoformat()]
+    future_events = [event for event in EVENTS if today.isoformat() <= event["date"] <= two_weeks_later.isoformat()]
     return future_events

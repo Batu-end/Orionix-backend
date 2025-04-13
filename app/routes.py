@@ -29,8 +29,8 @@ app.add_middleware(
 # weather, date, location, event type are
 
 
-@app.get("/getEventsByCoordinates/") # route identification
-async def get_event_by_coor(lat, lon):
+@app.get("/getWeatherByCoordinates/") # route identification
+async def get_weather_by_coor(lat, lon):
     # get lat, lon from allow
     # return json
     res = await get_with_coor(lat, lon)
@@ -39,8 +39,8 @@ async def get_event_by_coor(lat, lon):
     return res
 
 
-@app.get("/getEventsByZip")
-async def get_event_by_zip(zip_code):
+@app.get("/getWeatherByZip")
+async def get_weather_by_zip(zip_code):
 
     lat, lon = await get_with_zip(zip_code)
 
