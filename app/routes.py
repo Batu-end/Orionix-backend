@@ -1,7 +1,7 @@
 import os
 from fastapi import FastAPI
 from dotenv import load_dotenv
-from app.weather import get_with_zip, get_with_coor
+from app.weather import get_with_zip, get_with_coor, get_weather_condition
 from app.events import get_events_future
 
 env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.env'))
@@ -38,4 +38,10 @@ async def get_event_by_zip(zip_code):
 @app.get("/futureEvents")
 async def future_events():
     res = await get_events_future()
+    return res
+
+
+@app.get("/weatherType")
+async def weather_type(lat, lon):
+    res = await get_weather_condition(lat, lon)
     return res
