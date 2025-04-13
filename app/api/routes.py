@@ -18,10 +18,10 @@ app = FastAPI()
 async def get_event_by_coor(lat, lon):
     # get lat, lon from allow
     # return json
-    await get_with_coor(lat, lon)
+    res = await get_with_coor(lat, lon)
     print(lat, lon)
 
-    return
+    return res
 
 
 @app.post("/getEventsByZip")
@@ -29,5 +29,7 @@ async def get_event_by_zip(zip_code):
 
     lat, lon = await get_with_zip(zip_code)
 
-    await get_with_coor(lat, lon)
+    res = await get_with_coor(lat, lon)
     print(zip_code)
+
+    return res
