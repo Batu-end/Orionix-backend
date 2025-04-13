@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from app.weather import get_with_zip, get_with_coor, get_weather_condition
 from app.events import get_events_future
 from app.planner import generate_tonight_summary
+from app.places import get_nearby_stargazing_spots
+
 
 env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.env'))
 load_dotenv(dotenv_path=env_path)
@@ -67,4 +69,10 @@ async def weather_type_by_zip(zip_code):
     lat, lon = await get_with_zip(zip_code)
     res = await generate_tonight_summary(lat, lon)
     print(res)
+    return res
+
+
+@app.get("/getNearbyPlaces")
+async def places(lat: float, lon: float):
+    res = await get_nearby_stargazing_spots(lat, lon)
     return res
