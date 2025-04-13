@@ -1,15 +1,54 @@
+import os
+import httpx
+from dotenv import load_dotenv
+
+env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '.env'))
+load_dotenv(dotenv_path=env_path)
+
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
+
+# OPENWEATHER API CALL: https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}
+# GEOCODER API CALL: http://api.openweathermap.org/geo/1.0/zip?zip={zip code},{country code}&appid={API key}
+
+async def get_coordinates(city: str = None, zip_code: str = None, country: str = "US"):
+
+    async def get_lat_lon(city: str, country: str):
+
+        async with httpx.AsyncClient() as client:
+
+            if zip_code:
+                api_url_zip = f"http://api.openweathermap.org/geo/1.0/zip?zip={zip_code},{country}&appid={API_KEY}"
+                zip_response = await client.get(api_url_zip)
+                # if zip_response.status_code == 200:
+                data = zip_response.json()
+                    
+        lat = data.get("lat")
+        lon = data.get("lon")
+        return lat, lon
 
 
-def get_weather(lat, lon):
-    """
-    Get the weather for a given latitude and longitude.
+    # async def get_weather(lat, lon):
 
-    Args:
-        lat (float): Latitude.
-        lon (float): Longitude.
+    #     async with httpx.AsyncClient() as client:
 
-    Returns:
+    #         api_url_coor = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}&units=metric"
 
-    """
+    #         zip_response = await client.get(api_url_coor)
 
-    https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}
+    #         # if zip_response.status_code == 200:
+    #         data = zip_response.json()
+        
+
+    async def get_weather(lat: float, lon: float):
+
+        async with httpx.AsyncClient() as client:
+
+            api_url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}"
+            response = await client.get(api_url)
+
+            if response.status_code == 200:
+                return response.json()
+            else:
+                return {"error": "Failed to fetch weather data."}
+
+    
