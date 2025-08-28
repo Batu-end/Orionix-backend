@@ -8,9 +8,7 @@ Orionix was ***developed in 24 hours*** for [FullyHacks 2025](https://fullyhacks
 
 ## The Menus
 
-![Main Menu](./images/OrionixMainMenu.png)
-![Events List](./images/OrionixEvents.png)
-![Map](./images/OrionixMap.png)
+<img src="./images/OrionixMainMenu.png" alt="alt text" width="33%"> <img src="./images/OrionixEvents.png" alt="alt text" width="33%"> <img src="./images/OrionixMap.png" alt="alt text" width="33%">
 
 ---
 ## Getting Started
