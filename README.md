@@ -4,6 +4,8 @@ This is the backend portion for **Orionix**, a mobile app that lets users find s
 
 Orionix was ***developed in 24 hours*** for [FullyHacks 2025](https://fullyhacks.acmcsuf.com/) Hackathon by myself and [Vladyslav Korenevskyi](https://github.com/tmbkoren).
 
+If you are curious to see the **frontend**, head over to [Orionix Frontend.](https://github.com/tmbkoren/Orionix_front)
+
 ---
 
 ## The Menus
@@ -23,6 +25,7 @@ In order to run Orionix on your laptop, follow *these* steps:
 ---
 ## Resources Used
 
+* [Railway](https://railway.com/) - Hosts the app completely on the cloud
 * [OpenWeather](https://openweathermap.org/api) - API used to gather weather data
 * [Google (speficially Places)](https://developers.google.com/maps/documentation/places/web-service/overview) - API used to integrate the map
 * [React Native](https://reactnative.dev/) - Frontend, built with React
