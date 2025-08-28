@@ -104,5 +104,3 @@ Follow these instructions to get the backend running on your local machine.
     ```sh
     uvicorn app.routes:app --reload
     ```
-    The server will be running at `http://127.0.0.1:8000`.
-    
