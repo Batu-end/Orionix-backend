@@ -13,7 +13,7 @@ Orionix was ***developed in 24 hours*** for [FullyHacks 2025](https://fullyhacks
 <p align="center">
   <img src="./images/OrionixMainMenu.png" alt="Main Menu" width="35%">
   <br>
-  <em>The Main Menu prompts users for their location to find nearby events.</em>
+  <em>The Main Menu prompts users for their location to find nearby events (background is animated).</em>
 </p>
 <p align="center">
   <img src="./images/OrionixEvents.png" alt="Events List" width="35%">
@@ -105,13 +105,4 @@ Follow these instructions to get the backend running on your local machine.
     uvicorn app.routes:app --reload
     ```
     The server will be running at `http://127.0.0.1:8000`.
-
----
-# API Endpoints
-
-Here are the primary endpoints available.
-
-| Method | Endpoint                    | Description                                       |
-|--------|-----------------------------|---------------------------------------------------|
-| `GET`  | `/events/{zip_code}`        | Fetches upcoming celestial events for a given zip code, including weather conditions and rarity. |
-| `GET`  | `/locations/{lat}/{lon}`    | Fetches nearby stargazing locations (parks, trails, etc.) with low light pollution based on latitude and longitude. |
+    
